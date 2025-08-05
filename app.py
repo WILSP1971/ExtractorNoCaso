@@ -79,34 +79,6 @@ def index():
 
     return render_template('index.html', results=results)
 
-
-
-""" @app.route('/', methods=['GET', 'POST'])
-def index():
-    results = []
-    if request.method == 'POST':
-        file = request.files['file']
-        if file and file.filename.endswith('.zip'):
-            zip_path = os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(file.filename))
-            file.save(zip_path)
-
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                zip_ref.extractall(UPLOAD_FOLDER)
-
-            for root, _, files in os.walk(UPLOAD_FOLDER):
-                for filename in files:
-                    if allowed_file(filename):
-                        img_path = os.path.join(root, filename)
-                        text = extract_text_from_image(img_path)
-                        case_number = find_case_number(text)
-                        results.append({
-                            'filename': filename,
-                            'case_number': case_number or "No detectado"
-                        })
-            # Limpia uploads
-            for f in os.listdir(UPLOAD_FOLDER):
-                os.remove(os.path.join(UPLOAD_FOLDER, f))
-            os.remove(zip_path)
-    return render_template('index.html', results=results)
- """
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
 
