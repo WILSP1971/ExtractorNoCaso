@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Extractor de Número de Caso</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h1 class="mb-4 text-center">🔍 Extractor de Números de Caso en Imágenes</h1>
+
+<!--     <form method="POST" enctype="multipart/form-data" class="mb-5">
+        <div class="input-group">
+            <input type="file" name="file" class="form-control" required accept=".zip">
+            <button type="submit" class="btn btn-primary">Subir y procesar</button>
+        </div>
+        <div class="form-text">Solo archivos .zip con imágenes.</div>
+    </form>
+ -->
+
+    <form method="POST" enctype="multipart/form-data" class="mb-5">
+        <label class="form-label">Subir carpeta o archivo .zip</label>
+        <input type="file" name="files" webkitdirectory multiple class="form-control mb-2" required>
+        <div class="form-text">Puedes seleccionar una carpeta (Chrome/Edge) o cargar un archivo .zip</div>
+        <button type="submit" class="btn btn-primary mt-2">Procesar</button>
+    </form>
+
+    {% if results %}
+        <h3>Resultados:</h3>
+        <table class="table table-bordered table-striped mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre de archivo</th>
+                    <th>Número de caso detectado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in results %}
+                <tr>
+                    <td>{{ r.filename }}</td>
+                    <td>{{ r.case_number }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>
+
