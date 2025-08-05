@@ -1,5 +1,5 @@
 # Usa una imagen base de Python con Debian
-FROM python:3.11-slim
+FROM python:3.10-slim
 
 # Establece el directorio de trabajo
 WORKDIR /app
